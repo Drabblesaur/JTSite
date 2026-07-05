@@ -338,12 +338,15 @@ export default function About() {
         <Footer
           actions={[
             {
-              label: "you@email.com",
+              label: "jtochap785@gmail.com",
               primary: true,
-              href: "mailto:you@email.com",
+              href: "mailto:jtochap785@gmail.com",
             },
             { label: "See my work →", to: "/#work" },
-            { label: "LinkedIn ↗", href: "https://linkedin.com" },
+            {
+              label: "LinkedIn ↗",
+              href: "https://linkedin.com/in/johnnyto015",
+            },
           ]}
           back={{ label: "Back home ↑", to: "/" }}
         />

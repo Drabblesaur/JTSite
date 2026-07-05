@@ -114,7 +114,7 @@ export const PROJECTS = {
     cardBlurb:
       "A note-taking app with a local Ollama agent that answers questions about your notes via RAG — no cloud, no API keys.",
 
-    cardChips: ["Ollama", "RAG", "Electron/Tauri", "IN PROGRESS"],
+    cardChips: ["Ollama", "Tauri", "IN PROGRESS"],
 
     liveLabel: null,
 
@@ -124,7 +124,7 @@ export const PROJECTS = {
     role: "Solo · design + implementation",
     timeline: "2024",
 
-    stack: ["TypeScript", "Electron/Tauri", "Python", "Ollama", "RAG"],
+    stack: ["TypeScript", "Tauri", "Python", "Ollama", "RAG"],
 
     codeUrl: "https://github.com/Drabblesaur/OfflineRAGNotes",
     liveUrl: null,
