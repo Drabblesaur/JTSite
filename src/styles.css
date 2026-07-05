@@ -1,0 +1,68 @@
+/* Global resets, fonts, and keyframes.
+   Per-page background colors are set by each page component. */
+
+html { scroll-behavior: smooth; }
+
+@font-face {
+  font-family: 'Redaction 35';
+  src: url('/assets/Redaction35-Regular.woff') format('woff');
+  font-weight: 400 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Comico';
+  src: url('/assets/Comico-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+body {
+  margin: 0;
+  color: #1a1712;
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection { background: #1a1712; color: #fcfcfa; }
+
+@keyframes fadeup {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes bob {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(6px); }
+}
+
+/* Résumé print rules */
+@media print {
+  body { background: #fff; }
+  .no-print { display: none !important; }
+  .sheet { box-shadow: none !important; margin: 0 !important; width: 100% !important; }
+}
+
+/* Utility classes used by the fancycomponents (ScrambleHover) — normally
+   provided by Tailwind. Defined here since this project doesn't use Tailwind. */
+.sr-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+.inline-block { display: inline-block; }
+.whitespace-pre-wrap { white-space: pre-wrap; }
+
+/* Respect users who ask for reduced motion: neutralize decorative animation. */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
