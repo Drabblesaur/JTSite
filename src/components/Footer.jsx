@@ -82,7 +82,7 @@ export default function Footer({
               fontWeight: 700,
             }}
           >
-            Currently seeking · frontend &amp; ML · 2026
+            Currently seeking · Full Stack &amp; ML · 2026
           </div>
           <h2
             style={{

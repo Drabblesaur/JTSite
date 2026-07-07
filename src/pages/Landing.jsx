@@ -416,13 +416,30 @@ export default function Landing() {
             {[
               {
                 label: "Frontend",
-                items: ["React", "TypeScript", "Next.js", "Tailwind"],
+                items: [
+                  "React",
+                  "TypeScript",
+                  "Next.js",
+                  "Tailwind",
+                  "Spline",
+                  "React Native",
+                ],
               },
               {
                 label: "Machine learning",
-                items: ["PyTorch", "NumPy", "scikit-learn", "FastAPI"],
+                items: [
+                  "PyTorch",
+                  "NumPy",
+                  "scikit-learn",
+                  "FastAPI",
+                  "LangChain",
+                  "Python",
+                ],
               },
-              { label: "Tools", items: ["Git", "Docker", "Figma", "Postgres"] },
+              {
+                label: "Tools",
+                items: ["Git", "Docker", "Figma", "Postgres", "MongoDB"],
+              },
             ].map((col) => (
               <div
                 key={col.label}

@@ -301,8 +301,11 @@ export default function About() {
           >
             {[
               { k: "Based in", v: "San Jose, CA" },
-              { k: "Studying", v: "M.S. Computer Science" },
-              { k: "Open to", v: "Frontend & ML roles" },
+              {
+                k: "Degree",
+                v: "M.S. Software Engineering",
+              },
+              { k: "Open to", v: "Full Stack & ML roles" },
             ].map((f) => (
               <div
                 key={f.k}
