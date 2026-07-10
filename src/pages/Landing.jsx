@@ -13,7 +13,7 @@ function WorkCard({ p }) {
   return (
     <Box
       as="article"
-      sx="border:1px solid #e6e0d2;border-radius:18px;overflow:hidden;background:#fff;transition:transform .25s,box-shadow .25s;height:100%;display:flex;flex-direction:column"
+      sx="border:1px solid #e6e0d2;border-radius:18px;overflow:hidden;background:#fff;transition:transform .25s cubic-bezier(0.22,1,0.36,1),box-shadow .25s cubic-bezier(0.22,1,0.36,1);height:100%;display:flex;flex-direction:column"
       hx="transform:translateY(-3px);box-shadow:0 18px 40px -22px rgba(26,23,18,.35)"
     >
       <div

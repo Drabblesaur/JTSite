@@ -36,7 +36,7 @@ export function GridSpinner({ size = 72, gap = 0, speed = 200, color = '#000000'
             background: on ? color : 'transparent',
             width: cellSize,
             height: cellSize,
-            transition: 'background 60ms',
+            transition: 'background 60ms linear',
           }}
         />
       ))}

@@ -32,7 +32,9 @@ export default function Nav({ active = null }) {
   const mobileMenu = m && open;
   const menuTransition = reducedMotion
     ? "none"
-    : "max-height 220ms ease, opacity 180ms ease, transform 220ms ease, padding 220ms ease, margin-top 220ms ease";
+    : mobileMenu
+      ? "max-height 250ms cubic-bezier(0.22, 1, 0.36, 1), opacity 250ms cubic-bezier(0.22, 1, 0.36, 1), transform 250ms cubic-bezier(0.22, 1, 0.36, 1), padding 250ms cubic-bezier(0.22, 1, 0.36, 1), margin-top 250ms cubic-bezier(0.22, 1, 0.36, 1)"
+      : "max-height 150ms cubic-bezier(0.22, 1, 0.36, 1), opacity 150ms cubic-bezier(0.22, 1, 0.36, 1), transform 150ms cubic-bezier(0.22, 1, 0.36, 1), padding 150ms cubic-bezier(0.22, 1, 0.36, 1), margin-top 150ms cubic-bezier(0.22, 1, 0.36, 1)";
 
   const menuPanelStyle = m
     ? {
