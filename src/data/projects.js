@@ -107,7 +107,7 @@ export const PROJECTS = {
     tag: "Machine learning",
     tagColor: "#0358f7",
     image: "/assets/projects/jot1.png",
-    galleryImages: ["/assets/projects/jot2.png", "/assets/projects/jot3.png"],
+    galleryImages: ["/assets/projects/jot2.gif", "/assets/projects/jot3.png"],
 
     title: "Jot — Offline Notes with a RAG agent",
 
