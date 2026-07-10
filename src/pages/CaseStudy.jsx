@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams, Navigate } from "react-router-dom";
 import Nav from "../components/Nav.jsx";
 import Footer from "../components/Footer.jsx";
@@ -21,6 +21,23 @@ export default function CaseStudy() {
   useEffect(() => {
     if (p) document.title = `${p.title} — Johnny To`;
   }, [p]);
+
+  const [lightbox, setLightbox] = useState(null);
+
+  useEffect(() => {
+    if (!lightbox) return;
+    const onKey = (e) => {
+      if (e.key === "Escape") setLightbox(null);
+    };
+    document.addEventListener("keydown", onKey);
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.removeEventListener("keydown", onKey);
+      document.body.style.overflow = prevOverflow;
+    };
+  }, [lightbox]);
+
   if (!p) return <Navigate to="/" replace />;
   const next = PROJECTS[p.next];
 
@@ -151,6 +168,7 @@ export default function CaseStudy() {
           }}
         >
           <div
+            onClick={() => setLightbox({ src: p.image, alt: p.title })}
             style={{
               width: "100%",
               aspectRatio: "16 / 9",
@@ -158,6 +176,7 @@ export default function CaseStudy() {
               borderRadius: 18,
               overflow: "hidden",
               background: "#f4f1e8",
+              cursor: "zoom-in",
             }}
           >
             <img
@@ -377,6 +396,9 @@ export default function CaseStudy() {
             {p.galleryImages.map((src, n) => (
               <div
                 key={src}
+                onClick={() =>
+                  setLightbox({ src, alt: `${p.title} detail ${n + 1}` })
+                }
                 style={{
                   width: "100%",
                   aspectRatio: "4 / 3",
@@ -384,6 +406,7 @@ export default function CaseStudy() {
                   borderRadius: 14,
                   overflow: "hidden",
                   background: "#f4f1e8",
+                  cursor: "zoom-in",
                 }}
               >
                 <img
@@ -461,6 +484,73 @@ export default function CaseStudy() {
           back={{ label: "Back home ↑", to: "/" }}
         />
       </div>
+
+      {lightbox && (
+        <div
+          onClick={() => setLightbox(null)}
+          role="dialog"
+          aria-modal="true"
+          aria-label={lightbox.alt}
+          style={{
+            position: "fixed",
+            inset: 0,
+            zIndex: 50,
+            background: "rgba(12,11,8,.55)",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            padding: 32,
+            cursor: "zoom-out",
+            animation: "lightboxIn .18s ease both",
+          }}
+        >
+          <div
+            aria-hidden="true"
+            style={{
+              position: "absolute",
+              inset: 0,
+              backdropFilter: "blur(22px)",
+              WebkitBackdropFilter: "blur(22px)",
+              maskImage: "linear-gradient(to bottom, transparent 0%, #000 65%)",
+              WebkitMaskImage:
+                "linear-gradient(to bottom, transparent 0%, #000 65%)",
+              pointerEvents: "none",
+            }}
+          />
+          <button
+            onClick={() => setLightbox(null)}
+            aria-label="Close"
+            style={{
+              position: "absolute",
+              top: 24,
+              right: 28,
+              width: 40,
+              height: 40,
+              borderRadius: "50%",
+              border: "1px solid rgba(255,255,255,.24)",
+              background: "rgba(255,255,255,.06)",
+              color: "#fcfcfa",
+              fontSize: 18,
+              lineHeight: 1,
+              cursor: "pointer",
+            }}
+          >
+            ✕
+          </button>
+          <img
+            src={lightbox.src}
+            alt={lightbox.alt}
+            onClick={(e) => e.stopPropagation()}
+            style={{
+              maxWidth: "100%",
+              maxHeight: "90vh",
+              borderRadius: 12,
+              boxShadow: "0 30px 80px rgba(0,0,0,.5)",
+              animation: "lightboxImgIn .22s cubic-bezier(.16,1,.3,1) both",
+            }}
+          />
+        </div>
+      )}
     </>
   );
 }
